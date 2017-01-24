@@ -166,7 +166,7 @@ if __name__ == '__main__':
                         help='Directory to journald logs (default: %(default)s)')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--prefix', default='',
-                       help='Log group prefix (default is blank). Log group will be {prefix}_{instance_id}')
+                       help='Log group prefix (default is blank). Log group will be {prefix}/{instance_id}')
     group.add_argument('--log-group',
                        help='Name of the log group to use')
     args = parser.parse_args()
@@ -176,7 +176,7 @@ if __name__ == '__main__':
     else:
         log_group = get_instance_id()
         if args.prefix:
-            log_group = '{}_{}'.format(args.prefix, log_group)
+            log_group = '{}/{}'.format(args.prefix, log_group)
 
     client = CloudWatchClient(log_group, args.cursor)
 
