@@ -176,7 +176,7 @@ if __name__ == '__main__':
                        help='Log group prefix (default is blank). Log group will be {prefix}/{instance_id}')
     group.add_argument('--log-group',
                        help='Name of the log group to use')
-    group.add_argument('--retention', default='30',
+    group.add_argument('--retention', type=int, default='30',
                        help='Log group retention period, in days. See AWS docs for valid values.')
 
     args = parser.parse_args()
