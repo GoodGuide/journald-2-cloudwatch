@@ -11,6 +11,7 @@ import botocore
 
 def get_instance_id():
     URL = 'http://169.254.169.254/latest/meta-data/instance-id'
+    print('Fetching AWS EC2 Instance ID from EC2 Metadata API...')
     with urllib.request.urlopen(URL) as src:
         return src.read().decode()
 
